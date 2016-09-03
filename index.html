@@ -13,7 +13,13 @@
 <body>
     <div class="container">
         <div class="row">
-            <div id="buttons">
+            <div class="col-sm-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="panel-body" id="buttons">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -58,7 +64,7 @@
         // b.text(food[i]);
 
         // //alternatively you could do it in one line but it'll be harder to read
-        var b = $('<button class="btn btn-secondary" data-let="' + food[i] + ' ">').text(food[i]);
+        var b = $('<button class="btn btn-warning" data-let="' + food[i] + ' ">').text(food[i]);
 
         $("#buttons").append(b);
 
