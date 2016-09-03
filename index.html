@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <label for="search">Search Term:</label>
                                 <input type="text" class="form-control" id="searchTerm">
-                                <button type="submit" class="btn btn-default" id="runSearch"><i class="fa fa-search"></i> Search</button>
+                                <button type="submit" class="btn btn-default" id="runSearch"> Search</button>
                             </div>
                         </form>
                     </div>
@@ -65,36 +65,36 @@
     };
 
 
-    $('#runSearch').on('click', function() {
-        var searchTerm = $('#searchTerm').val().trim();
-        // 
-        var queryURL = ("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=") + searchTerm;
+    // $('#runSearch').on('click', function() {
+    //     var searchTerm = $('#searchTerm').val().trim();
+    //     // 
+    //     var queryURL = ("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=" + searchTerm);
 
-        // 
-        $.ajax({
-            url: queryURL,
-            method: 'GET'
-        })
+    //     // 
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: 'GET'
+    //     })
 
-        // 
-        .done(function(response) {
+    //     // 
+    //     .done(function(response) {
 
-            // 
-            var imageUrl = response.data.image_original_url;
+    //         // 
+    //         var imageUrl = response.data.image_original_url;
 
-            // 
-            var getImage = $("<img>");
+    //         // 
+    //         var getImage = $("<img>");
 
-            // 
-            getImage.attr('src', imageUrl);
-            getImage.attr('alt', 'get image');
+    //         // 
+    //         getImage.attr('src', imageUrl);
+    //         getImage.attr('alt', 'get image');
 
-            //
-            $('#images').prepend(getImage);
-        });
-    });
+    //         //
+    //         $('#images').prepend(getImage);
+    //     });
+    // });
 
-    $('#catButton').on('click', function() {
+    $('.btn').on('click', function() {
 
         // After the click function it accesses api and searches for cats
         var queryURL = "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cats";
