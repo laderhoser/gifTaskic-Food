@@ -41,7 +41,7 @@
                             <div class="form-group">
                                 <label for="search">Search Term:</label>
                                 <input type="text" class="form-control" id="searchTerm">
-                                <button type="submit" class="btn btn-default" id="runSearch"> Search</button>
+                                <button type="button" class="btn btn-default" id="runSearch"> Search</button>
                             </div>
                         </form>
                     </div>
@@ -61,7 +61,7 @@
 
 
             for (var i = 0; i < food.length; i++) {
-                var b = $('<button class="btn btn-warning">');
+                var b = $('<button class="btn btn-warning food">');
 
                 b.attr('data-let', food[i]);
 
@@ -74,39 +74,39 @@
             };
 
 
-            // $('#runSearch').on('click', function() {
-            //     var searchTerm = $('#searchTerm').val().trim();
-            //     // 
-            //     var queryURL = ("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=" + searchTerm);
+            $('#runSearch').on('click', function() {
+                var searchTerm = $('#searchTerm').val().trim();
+                // // // 
+                var queryURL = ("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=" + searchTerm);
+                // var queryURL = ("http://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=dc6zaTOxFJmzC&limit=10");
+                // 
+                $.ajax({
+                    url: queryURL,
+                    method: 'GET'
+                })
 
-            //     // 
-            //     $.ajax({
-            //         url: queryURL,
-            //         method: 'GET'
-            //     })
+            
+                .done(function(response) {
 
-            //     // 
-            //     .done(function(response) {
+                    // put into array
+                    var imageUrl = response.data.image_original_url;
 
-            //         // 
-            //         var imageUrl = response.data.image_original_url;
+                    // 
+                    var getImage = $("<img>");
 
-            //         // 
-            //         var getImage = $("<img>");
+                    // 
+                    getImage.attr('src', imageUrl);
+                    getImage.attr('alt', 'get image');
 
-            //         // 
-            //         getImage.attr('src', imageUrl);
-            //         getImage.attr('alt', 'get image');
+                    //
+                    $('#images').prepend(getImage);
+                });
+            });
 
-            //         //
-            //         $('#images').prepend(getImage);
-            //     });
-            // });
+            $('.food').on('click', function() {
 
-            $('.btn').on('click', function() {
-
-                
-                var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cheese";
+                var foodItem = $(this).attr('data-let')
+                var queryURL = ("https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=" + foodItem);
 
                 $.ajax({
                     url: queryURL,
